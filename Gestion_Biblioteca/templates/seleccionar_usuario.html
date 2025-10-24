@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block titulo %}Seleccionar Usuario{% endblock %}
+
+{% block contenido %}
+<h1>Selecciona tu usuario</h1>
+<form method="POST" action="{{ url_for('seleccionar_usuario') }}" class="form-seleccionar-usuario">
+    <div class="form-group">
+        <label for="id_usuario">Usuario</label>
+        <select class="form-control" id="id_usuario" name="id_usuario" required>
+            {% for usuario in usuarios %}
+            <option value="{{ usuario.id_usuario }}">{{ usuario.nombre }} (ID: {{ usuario.id_usuario }})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Entrar</button>
+</form>
+
+<hr>
+<p>¿No tienes usuario? <a href="{{ url_for('registro_usuario_publico') }}" class="btn btn-secondary">Registrarse</a></p>
+{% endblock %}

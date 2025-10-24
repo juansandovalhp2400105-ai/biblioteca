@@ -1,0 +1,154 @@
+{
+    "libros": [
+        {
+            "titulo": "gojo kit kat",
+            "autor": "jeje",
+            "isbn": "1111111111",
+            "editorial": "tokio",
+            "a\u00f1o_publicacion": "2022",
+            "disponible": false
+        },
+        {
+            "titulo": "donita kiojuro",
+            "autor": "mamacoco",
+            "isbn": "2222222222",
+            "editorial": "tokio",
+            "a\u00f1o_publicacion": "2019",
+            "disponible": false
+        },
+        {
+            "titulo": "los kit kat de k",
+            "autor": "musan",
+            "isbn": "199999999",
+            "editorial": "hashira",
+            "a\u00f1o_publicacion": "2019",
+            "disponible": true
+        },
+        {
+            "titulo": "biografia \"la vida de tolosa\"",
+            "autor": "isabella y sandoval",
+            "isbn": "234567890",
+            "editorial": "aniplex",
+            "a\u00f1o_publicacion": "2025",
+            "disponible": true
+        },
+        {
+            "titulo": "pedro paramo",
+            "autor": "juan rulfo",
+            "isbn": "12345555",
+            "editorial": "mexicano",
+            "a\u00f1o_publicacion": "2020",
+            "disponible": true
+        }
+    ],
+    "usuarios": [
+        {
+            "id_usuario": "01",
+            "nombre": "noel",
+            "email": "noel@gmail.com",
+            "contrasena": "admin123",
+            "rol": "usuario",
+            "libros_prestados": []
+        },
+        {
+            "id_usuario": "02",
+            "nombre": "isabela",
+            "email": "isabela@gmail.com",
+            "contrasena": "admin123",
+            "rol": "usuario",
+            "libros_prestados": [
+                "<biblioteca.Libro object at 0x0000026C38AE4BD0>"
+            ]
+        },
+        {
+            "id_usuario": "03",
+            "nombre": "sandoval",
+            "email": "sando.bx@gmail.com",
+            "contrasena": "admin123",
+            "rol": "usuario",
+            "libros_prestados": []
+        },
+        {
+            "id_usuario": "4",
+            "nombre": "alejandro",
+            "email": "ale@gmail.com",
+            "contrasena": "1111",
+            "rol": "usuario",
+            "libros_prestados": []
+        },
+        {
+            "id_usuario": "5",
+            "nombre": "milton",
+            "email": "milton@gmail.com",
+            "contrasena": "1234",
+            "rol": "usuario",
+            "libros_prestados": []
+        },
+        {
+            "id_usuario": "6",
+            "nombre": "luis",
+            "email": "luis@gmail.com",
+            "contrasena": "123456",
+            "rol": "usuario",
+            "libros_prestados": []
+        },
+        {
+            "id_usuario": "7",
+            "nombre": "juan",
+            "email": "juan@gmail.com",
+            "contrasena": "jlgc2359",
+            "rol": "usuario",
+            "libros_prestados": [
+                "<biblioteca.Libro object at 0x0000026C38AE4C10>"
+            ]
+        }
+    ],
+    "prestamos": [
+        {
+            "id_prestamo": 1,
+            "libro": {
+                "titulo": "gojo kit kat",
+                "autor": "jeje",
+                "isbn": "1111111111",
+                "editorial": "tokio",
+                "a\u00f1o_publicacion": "2022",
+                "disponible": false
+            },
+            "usuario": {
+                "id_usuario": "02",
+                "nombre": "isabela",
+                "email": "isabela@gmail.com",
+                "contrasena": "admin123",
+                "rol": "usuario",
+                "libros_prestados": [
+                    "<biblioteca.Libro object at 0x0000026C38AE4BD0>"
+                ]
+            },
+            "fecha_prestamo": "2025-10-23",
+            "fecha_devolucion": "2025-10-25"
+        },
+        {
+            "id_prestamo": 2,
+            "libro": {
+                "titulo": "donita kiojuro",
+                "autor": "mamacoco",
+                "isbn": "2222222222",
+                "editorial": "tokio",
+                "a\u00f1o_publicacion": "2019",
+                "disponible": false
+            },
+            "usuario": {
+                "id_usuario": "7",
+                "nombre": "juan",
+                "email": "juan@gmail.com",
+                "contrasena": "jlgc2359",
+                "rol": "usuario",
+                "libros_prestados": [
+                    "<biblioteca.Libro object at 0x0000026C38AE4C10>"
+                ]
+            },
+            "fecha_prestamo": "2025-10-23",
+            "fecha_devolucion": "2025-10-30"
+        }
+    ]
+}

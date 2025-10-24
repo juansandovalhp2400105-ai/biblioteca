@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block titulo %}Lobby{% endblock %}
+
+{% block contenido %}
+<div class="form-lobby">
+<h1>¿Quién eres?</h1>
+<form method="POST" action="{{ url_for('set_role') }}">
+    <button type="submit" name="role" value="admin" class="btn btn-primary">Administrador</button>
+    <button type="submit" name="role" value="user" class="btn btn-primary">Usuario</button>
+</form>
+</div>
+{% endblock %}

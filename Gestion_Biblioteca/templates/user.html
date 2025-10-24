@@ -1,0 +1,27 @@
+<div class="puteriaXD">
+{% extends "base.html" %}
+
+{% block titulo %}Usuario - Libros{% endblock %}
+
+{% block contenido %}
+<h1>Libros disponibles</h1>
+<ul class="list-group">
+    {% for libro in libros %}
+    {% if libro.disponible %}
+    <li class="list-group-item">{{ libro.titulo }} - {{ libro.autor }} (ISBN: {{ libro.isbn }})</li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+
+<h2>Mis préstamos</h2>
+<ul class="list-group">
+    {% for prestamo in prestamos %}
+        {% if user_id and prestamo.usuario and prestamo.usuario.id_usuario == user_id %}
+        <li class="list-group-item">{{ prestamo.libro.titulo }} - Fecha devol: {{ prestamo.fecha_devolucion.strftime('%Y-%m-%d') }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+{% endblock %}
+</div>

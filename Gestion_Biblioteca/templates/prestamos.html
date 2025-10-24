@@ -1,0 +1,81 @@
+<div class="chingadamadre">
+{% extends "base.html" %}
+
+{% block titulo %}Préstamos{% endblock %}
+
+{% block contenido %}
+    <h1>Gestión de Préstamos</h1>
+    <form method="POST" action="{{ url_for('gestionar_prestamos')}}" class="form-prestar-libro">
+        <div class="form-group">
+            <label for="id_usuario">Usuario</label>
+            <select class="form-control" id="id_usuario" name="id_usuario" required>
+                {% for usuario in usuarios %}
+                <option value="{{ usuario.id_usuario}}">{{ usuario.id_usuario}} - {{ usuario.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="isbn">Libro</label>
+            <select class="form-control" id="isbn" name="isbn" required>
+                {% for libro in libros %}
+                <option value="{{ libro.isbn }}">{{ libro.isbn }} - {{ libro.titulo }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="fecha_prestamo">Fecha de Préstamo</label>
+            <input type="date" class="form-control" id="fecha_prestamo" name="fecha_prestamo">
+        </div>
+        <div class="form-group">
+            <label for="fecha_devolucion">Fecha de Devolución</label>
+            <input type="date" class="form-control" id="fecha_devolucion" name="fecha_devolucion">
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar Préstamo</button>
+    </form>
+
+    <h2>Devolución de Libro</h2>
+    <form method="POST" action="{{ url_for('gestionar_prestamos') }}" class="form-devolver-libro">
+        <div class="form-group">
+            <label for="id_usuario_devolucion">Usuario</label>
+            <select class="form-control" id="id_usuario_devolucion" name="id_usuario" required>
+                {% for usuario in usuarios %}
+                <option value="{{ usuario.id_usuario}}">{{ usuario.id_usuario }} - {{ usuario.nombre}}</option>
+                {% endfor %}
+            </select>
+            <div class="form-group">
+                <label for="isbn_devolucion">Libro</label>
+                <select class="form-control" id="isbn_devolucion" name="isbn" required>
+                    {% for libro in libros %}
+                    <option value="{{ libro.isbn }}">{{ libro.isbn }} - {{ libro.titulo }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Devolver Libro</button>
+        </div>
+    </form>
+    <h2>Listado de Préstamos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Préstamo</th>
+                <th>Libro</th>
+                <th>Usuario</th>
+                <th>Fecha de Préstamo</th>
+                <th>Fecha de Devolución</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prestamo in prestamos %}
+            <tr>
+                <td>{{ prestamo.id_prestamo }}</td>
+                <td>{{ prestamo.libro.titulo }} ({{ prestamo.libro.isbn }})</td>
+                <td>{{ prestamo.usuario.nombre }} ({{ prestamo.usuario.id_usuario }})</td>
+                <td>{{ prestamo.fecha_prestamo.strftime('%Y-%m-%d') }}</td>
+                <td>{{ prestamo.fecha_devolucion.strftime('%Y-%m-%d') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+</div>

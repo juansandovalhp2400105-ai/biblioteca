@@ -1,0 +1,38 @@
+<div class="pendejada">
+{% extends "base.html" %}
+
+{% block titulo %}Usuarios{% endblock %}
+
+{% block contenido %}
+    <h1>Usuarios</h1>
+    <form method="POST" action="{{ url_for('manejar_usuarios') }}" class="form-agregar-usuario">
+        <div class="form-group">
+            <label for="id_usuario">ID Usuario</label>
+            <input type="number" class="form-control" id="id_usuario" name="id_usuario" required>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Añadir Usuario</button>
+    </form>
+    
+    <h2>Lista de Usuarios</h2>
+    <ul class="list-group">
+        {% for usuario in usuarios %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ usuario.nombre }} (ID: {{ usuario.id_usuario }}, Email: {{ usuario.email }})
+            <form method="POST" action="{{ url_for('eliminar_usuario', id_usuario=usuario.id_usuario) }}" class="form-eliminar-usuario" style="display: inline;">
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">Eliminar</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}
+</div>

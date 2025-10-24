@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Biblioteca Escolar{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <link rel="stylesheet" href="{{url_for ('static', filename= 'estilos.css')}}">
+</head>
+<body>
+    <div class = "Container">
+        <header>
+            Biblioteca Escolar</h1>
+        </header>
+    <nav>
+        <ul>
+
+            <li><a href="{{ url_for('index') }}">Inicio</a></li>
+            {% if session.get('role') == 'admin' %}
+                <li><a href="{{ url_for('manejar_libros') }}">Libros (Admin)</a></li>
+                <li><a href="{{ url_for('manejar_usuarios') }}">Usuarios (Admin)</a></li>
+                <li><a href="{{ url_for('gestionar_prestamos') }}">Préstamos (Admin)</a></li>
+            {% elif session.get('role') == 'user' %}
+                <li><a href="{{ url_for('user_view') }}">Ver Libros</a></li>
+                <li><a href="{{ url_for('gestionar_prestamos') }}">Mis Préstamos</a></li>
+            {% else %}
+                <li><a href="{{ url_for('index') }}">Lobby</a></li>
+            {% endif %}
+            {% if session.get('role') %}
+            {% if session.get('user_id') %}
+            <li>
+                <form method="POST" action="{{ url_for('cerrar_sesion') }}" style="display:inline">
+                    <button class="btn" type="submit">Cerrar sesión</button>
+                </form>
+            </li>
+            {% endif %}
+             <div id="button">
+            <li>
+                <form method="POST" action="{{ url_for('cerrar_sesion') }}" style="display:inline">
+                    <button class="btn" type="submit">Salir</button>
+                </form>
+                
+            </li>
+            </div>
+            {% endif %}
+        </ul>
+    </nav>
+    </div>
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+{% block contenido %}
+
+{% endblock %}
+
+    <footer>
+        <p>Biblioteca &copy; 2025</p>
+    </footer>
+    
+
+</body>
+</html>
